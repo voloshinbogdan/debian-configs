@@ -119,6 +119,16 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 	python3 -m venv .aqt-venv
 	```
 
+### Creator
+
+1. Install creator
+```sh
+aqt -c qt_install.cfg install-tool linux desktop tools_qtcreator_gui
+
+sudo mv /usr/bin/qtcreator /usr/bin/qtcreator.backup
+sudo ln -s ~/Tools/QtCreator/bin/qtcreator /usr/bin/
+```
+
 ## VPN
 
 ### VPN-user

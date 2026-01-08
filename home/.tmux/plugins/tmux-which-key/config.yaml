@@ -1,0 +1,108 @@
+# yaml-language-server: $schema=config.schema.yaml
+command_alias_start_index: 200
+keybindings:
+  # root_table: "`"
+  prefix_table: Space
+title:
+  style: align=centre,bold
+  prefix: tmux
+  prefix_style: fg=green,align=centre,bold
+position:
+  x: R
+  y: P
+custom_variables:
+  - name: log_info
+    value: "#[fg=green,italics] [info]#[default]#[italics]"
+macros:
+  - name: reload-config
+    commands:
+      - display "#{log_info} Loading config... "
+      - source-file $HOME/.tmux.conf
+      - display -p "\n\n... Press ENTER to continue"
+  - name: restart-pane
+    commands:
+      - display "#{log_info} Restarting pane"
+      - "respawnp -k -c #{pane_current_path}"
+items:
+  - name: BackTik
+    key: "`"
+    command: send-keys '`'
+  - name: Select Pane 0
+    key: "0"
+    command: select-window -t 0
+  - name: Select Pane 1
+    key: "1"
+    command: select-window -t 1
+  - name: Select Pane 2
+    key: "2"
+    command: select-window -t 2
+  - name: Select Pane 3
+    key: "3"
+    command: select-window -t 3
+  - name: Select Pane 4
+    key: "4"
+    command: select-window -t 4
+  - name: Select Pane 5
+    key: "5"
+    command: select-window -t 5
+  - name: Select Pane 6
+    key: "6"
+    command: select-window -t 6
+  - name: Select Pane 7
+    key: "7"
+    command: select-window -t 7
+  - name: Select Pane 8
+    key: "8"
+    command: select-window -t 8
+  - name: Select Pane 9
+    key: "9"
+    command: select-window -t 9
+  - name: Show Pane Numbers
+    key: q
+    command: display-panes
+  - name: Create New Pane (Split Horizontally)
+    key: "c"
+    command: new-window -c "#{pane_current_path}"
+
+  - separator: true
+  - name: Install Plugins
+    key: I
+    command: run-shell '~/.tmux/plugins/tpm/bin/install_plugins'
+  - name: Update Plugins
+    key: U
+    command: run-shell '~/.tmux/plugins/tpm/bin/update_plugins'
+  - separator: true
+  - name: Broadcast Input
+    key: a
+    command: setw synchronize-panes
+  - name: Split Horizontal
+    key: '\\'
+    command: split-window -h -c "#{pane_current_path}"
+  - name: Split Vertical
+    key: '-'
+    command: split-window -v -c "#{pane_current_path}"
+  - name: Copy
+    key: "["
+    command: copy-mode
+  - name: Open pane in vim
+    key: v
+    command: run-shell '~/.tmux/scripts/view-capture-pane.sh'
+  - name: Choose session
+    key: s
+    command: choose-tree -Zs
+  - name: Detach
+    key: d
+    command: detach
+
+  - separator: true
+  - name: "Run command-prompt"
+    key: ":"
+    command: command-prompt
+  - separator: true
+  - name: +Keys
+    key: "?"
+    command: list-keys -N
+  - name: Kill Session
+    key: X
+    command: "kill-session-safe"
+
