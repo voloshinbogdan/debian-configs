@@ -10,7 +10,11 @@
 	```
 
 1. Download and install [FiraCodeNerdFont](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip). I prefer mono normal
-
+	```sh
+	mkdir -p ~/.local/share/fonts
+	cp *.ttf ~/.local/share/fonts/
+	fc-cache -fv
+	```
 1. For second monitor using type-c
 https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-station-but-monitors-do-not-work
 	```
@@ -58,6 +62,8 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 
 ## Terminal
 
+### GUI
+
 1. install alacritty
 	```sh
 	cargo install alacritty
@@ -79,17 +85,32 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 	Categories=System;TerminalEmulator;
 	```
 
+1. link alacritty config from home
+
+### Shell
+
 1. install zsh
 	```sh
 	sudo apt -y install zsh zplug
 	```
 
-1. copy configuration zsh from home folder
+1. link configuration zsh from home folder
 
 1. make zsh default shell:
 	```sh
 	chsh -s /bin/zsh
 	```
+### Tmux
+
+#### Tmuxinator
+
+### fzf
+
+### zoxidie
+
+## AstroVim
+
+### Qt Debugger pretty printers
 
 ## Qt
 
@@ -98,4 +119,6 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 	python3 -m venv .aqt-venv
 	```
 
-## 
+## VPN
+
+### VPN-user
