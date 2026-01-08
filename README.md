@@ -16,7 +16,7 @@
 	fc-cache -fv
 	```
 1. For second monitor using type-c
-https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-station-but-monitors-do-not-work
+  https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-station-but-monitors-do-not-work
 	```
 	download the latest [driver for Ubuntu](https://www.synaptics.com/products/displaylink-graphics/downloads/ubuntu) (not following guide to unpack driver for other distros, nor this displaylink-debian)
 	unzip DisplayLink\ USB\ Graphics\ Software\ for\ Ubuntu5.6.1-EXE.zip
@@ -34,11 +34,13 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 1. install utils
 	```sh
 	sudo apt install -y htop curl pkg-config libfontconfig1-dev
+	sudo apt install -y clang libclang-dev llvm-dev
+	sudo apt install -y lua5.1 luarocks build-essential
 	```
 
 1. install python env
 	```sh
-	sudo apt install -y python3-pip python3-venv
+	sudo apt install -y python3-ipython python3-pip python3-venv
 	```
 
 1. install cargo:
@@ -108,7 +110,39 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 
 ### zoxidie
 
-## AstroVim
+## AstroNvim
+
+1. Install Nvim
+	```sh
+	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz
+	tar xzvf nvim-linux-x86_64.tar.gz
+	sudo ln -s /home/voloshin/nvim-linux-x86_64/bin/nvim /usr/bin/
+	```
+
+1. Install utils for AstroNvim
+	```sh
+	cargo install --locked tree-sitter-cli
+
+    brew install ripgrep
+
+    curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
+    chmod +x gdu_linux_amd64
+    sudo mv gdu_linux_amd64 /usr/bin/gdu
+
+    cargo install bottom
+
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    \. "$HOME/.nvm/nvm.sh"
+    nvm install 24
+	```
+
+1. Install AstroNvim
+  ```sh
+  mkdir ~/.config/nvim
+  git clone git@github.com:voloshinbogdan/astronvim-cfg.git ~/.config/nvim
+  ```
+
+1. Run AstroNvim
 
 ### Qt Debugger pretty printers
 
@@ -122,12 +156,12 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 ### Creator
 
 1. Install creator
-```sh
-aqt -c qt_install.cfg install-tool linux desktop tools_qtcreator_gui
+	```sh
+	aqt -c qt_install.cfg install-tool linux desktop tools_qtcreator_gui
 
-sudo mv /usr/bin/qtcreator /usr/bin/qtcreator.backup
-sudo ln -s ~/Tools/QtCreator/bin/qtcreator /usr/bin/
-```
+	sudo mv /usr/bin/qtcreator /usr/bin/qtcreator.backup
+	sudo ln -s ~/Tools/QtCreator/bin/qtcreator /usr/bin/
+	```
 
 ## VPN
 

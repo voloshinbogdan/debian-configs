@@ -9,6 +9,8 @@ alias grep='grep --color=auto'
 alias ec="$EDITOR $HOME/.zshrc" # edit .zshrc
 alias sc="source $HOME/.zshrc"  # reload zsh configuration
 alias lg='lazygit'
+alias vim='nvim'
+alias vi='NVIMLIGHT= nvim'
 
 # Set up the prompt - if you load Theme with zplugin as in this example, this will be overriden by the Theme. If you comment out the Theme in zplugins, this will be loaded.
 autoload -Uz promptinit
@@ -68,3 +70,7 @@ compinit
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
