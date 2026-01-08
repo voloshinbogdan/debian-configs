@@ -39,8 +39,10 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 	```sh
 	cargo install alacritty
 	```
-OR if stuck
-go to link https://sh.rustup.rs and run downloaded file
+	OR if stuck
+	```sh
+	go to link https://sh.rustup.rs and run downloaded file
+	```
 
 1. install alacritty
 	```sh
