@@ -1,10 +1,12 @@
 # Порядок действий
 
+## Базовые вещи
+
 1. Tweaks
 	```
 	Keyboard -> Additional layout options -> Capslock behavior like ESC
 	Windows -> Maximize
-		   Minimize
+	           Minimize
 	```
 
 1. Download and install [FiraCodeNerdFont](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip). I prefer mono normal
@@ -32,7 +34,7 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 
 1. install python env
 	```sh
-	sudo apt install python3-pip python3-venv
+	sudo apt install -y python3-pip python3-venv
 	```
 
 1. install cargo:
@@ -44,19 +46,42 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 	go to link https://sh.rustup.rs and run downloaded file
 	```
 
+1. install brew
+	```sh
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	```
+
+1. install lazygit
+	```sh
+	brew install lazygit
+	```
+
+## Terminal
+
 1. install alacritty
 	```sh
 	cargo install alacritty
 	```
-
-1. create aqt env
+1. alacrity desktop
 	```sh
-	python3 -m venv .aqt-venv
+	mkdir -p ~/.local/share/applications
+	vi ~/.local/share/applications/alacritty.desktop
+	update-desktop-database ~/.local/share/applications
+	```
+	```
+	[Desktop Entry]
+	Type=Application
+	Name=Alacritty
+	Comment=GPU accelerated terminal
+	Exec=/home/voloshin/.cargo/bin/alacritty
+	Icon=utilities-terminal
+	Terminal=false
+	Categories=System;TerminalEmulator;
 	```
 
 1. install zsh
 	```sh
-	sudo apt install zsh zplug
+	sudo apt -y install zsh zplug
 	```
 
 1. copy configuration zsh from home folder
@@ -66,7 +91,11 @@ https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-
 	chsh -s /bin/zsh
 	```
 
-1. install brew
+## Qt
+
+1. create aqt env
 	```sh
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	python3 -m venv .aqt-venv
 	```
+
+## 
