@@ -32,8 +32,8 @@
 
 1. install utils
     ```sh
-    sudo apt install -y htop curl pkg-config libfontconfig1-dev cmake libxcb-cursor-dev gdb lldb clang-format
-    sudo apt install -y clang libclang-dev llvm-dev
+    sudo apt install -y htop curl pkg-config libfontconfig1-dev libxcb-cursor-dev xsel
+    sudo apt install -y clang libclang-dev llvm-dev gdb lldb clang-format cmake
     sudo apt install -y lua5.1 luarocks build-essential
     ```
 
