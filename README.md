@@ -32,7 +32,7 @@
 
 1. install utils
     ```sh
-    sudo apt install -y htop curl pkg-config libfontconfig1-dev
+    sudo apt install -y htop curl pkg-config libfontconfig1-dev cmake libxcb-cursor-dev
     sudo apt install -y clang libclang-dev llvm-dev
     sudo apt install -y lua5.1 luarocks build-essential
     ```
@@ -198,6 +198,26 @@
     ```sh
     python3 -m venv .aqt-venv
     ```
+
+1. Link qt_install.cfg from qt
+
+1. Run aqt installer
+    ```sh
+    mkdir -p ~/.local/opt/Qt
+    cd ~/.local/opt/Qt
+    aqt -c ~/qt_install.cfg install-qt linux desktop 6.7.0 -m all
+    aqt -c ~/qt_install.cfg install-tool linux desktop tools_qtcreator_gui
+    aqt -c ~/qt_install.cfg install-example linux desktop 6.7.0 -m all
+    aqt -c ~/qt_install.cfg install-doc linux desktop 6.7.0 -m all
+    aqt -c ~/qt_install.cfg install-src linux desktop 6.7.0
+    aqt -c ~/qt_install.cfg install-tool linux desktop sdktool
+    ```
+1. Link executables to /usr/bin
+    ```sh
+    find /home/voloshin/.local/opt/Qt/6.7.0/gcc_64/bin/ -type f -executable -exec sudo ln -sf {} /usr/bin/ \;
+    find /home/voloshin/.local/opt/Qt/Tools/QtCreator/bin/ -type f -executable -exec sudo ln -sf {} /usr/bin/ \;
+    ```
+
 
 ### Creator
 
