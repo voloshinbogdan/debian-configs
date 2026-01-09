@@ -1,0 +1,15 @@
+#%Module1.0
+proc ModulesHelp { } {
+    puts stderr "Qt 6.7.0 (gcc_64)"
+}
+
+module-whatis "Qt 6.7.0 gcc_64"
+
+set qtroot $env(HOME)/.local/opt/Qt/6.7.0/gcc_64
+
+prepend-path PATH            $qtroot/bin
+prepend-path LD_LIBRARY_PATH $qtroot/lib
+prepend-path QT_PLUGIN_PATH  $qtroot/plugins
+prepend-path QML2_IMPORT_PATH $qtroot/qml
+
+setenv Qt6_DIR $qtroot

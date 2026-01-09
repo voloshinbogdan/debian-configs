@@ -32,9 +32,10 @@
 
 1. install utils
     ```sh
-    sudo apt install -y htop curl pkg-config libfontconfig1-dev libxcb-cursor-dev xsel
+    sudo apt install -y htop curl pkg-config libfontconfig1-dev libxcb-cursor-dev xsel rsync
     sudo apt install -y clang libclang-dev llvm-dev gdb lldb clang-format cmake
     sudo apt install -y lua5.1 luarocks build-essential
+    sudo apt install -y libgl-dev libopengl-dev libegl-dev libgl1-mesa-dev mesa-common-dev libxcb-xinerama0
     ```
 
 1. install python env
@@ -101,6 +102,11 @@
     ```sh
     chsh -s /bin/zsh
     ```
+1. install theme
+    ```sh
+    ln -sf ~/repos/debian-configs/home/.zplug/repos/ohmyzsh/ohmyzsh/custom/themes/agnoster-modern.zsh-theme ~/.zplug/repos/ohmyzsh/ohmyzsh/custom/themes/agnoster-modern.zsh-theme
+    ```
+
 ### Tmux
 
 1. Install Tmux
@@ -218,22 +224,19 @@
     aqt -c ~/qt_install.cfg install-src linux desktop 6.7.0
     aqt -c ~/qt_install.cfg install-tool linux desktop sdktool
     ```
-1. Link executables to /usr/bin
+1. To configure env vars use environment-modules
+
+### Enviroment modules
+
+1. Install modules
     ```sh
-    find ~/.local/opt/Qt/6.7.0/gcc_64/bin/ -type f -executable -exec sudo ln -sf {} /usr/bin/ \;
-    find ~/.local/opt/Qt/Tools/QtCreator/bin/ -type f -executable -exec sudo ln -sf {} /usr/bin/ \;
+    sudo apt install -y environment-modules
     ```
 
-1. Link lib to /usr/lib
+1. Configure modules
     ```sh
-    find ~/.local/opt/Qt/6.7.0/gcc_64/lib -name "*.so*" -exec sudo ln -sf {} /usr/lib/ \;
-    sudo ln -s ~/.local/opt/Qt/6.7.0/gcc_64/lib/cmake /usr/lib/cmake/Qt
-
-    ```
-
-1. Link include to /usr/include
-    ```sh
-    sudo ln -s ~/.local/opt/Qt/6.7.0/gcc_64/include/* /usr/include/
+    sudo mkdir -p /usr/share/modules/modulefiles/qt
+    sudo cp qt/6.7.0 /usr/share/modules/modulefiles/qt/
     ```
 
 ### Creator
@@ -256,7 +259,6 @@
     * Configure kit with added QtVersion, gcc and gdb.
     * Turn on Beautifier `Help -> About plugins`
     * Configure Beautifier `Edit -> Preferences -> Beautifier`: set `clang-format`, format on save, format style file with fallback llvm 
-
 
 ## VPN
 
