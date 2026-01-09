@@ -32,7 +32,7 @@
 
 1. install utils
     ```sh
-    sudo apt install -y htop curl pkg-config libfontconfig1-dev cmake libxcb-cursor-dev
+    sudo apt install -y htop curl pkg-config libfontconfig1-dev cmake libxcb-cursor-dev gdb lldb clang-format
     sudo apt install -y clang libclang-dev llvm-dev
     sudo apt install -y lua5.1 luarocks build-essential
     ```
@@ -44,7 +44,7 @@
 
 1. install cargo:
     ```sh
-    cargo install alacritty
+    curl https://sh.rustup.rs -sSf | sh
     ```
     OR if stuck
     ```sh
@@ -80,7 +80,7 @@
     Type=Application
     Name=Alacritty
     Comment=GPU accelerated terminal
-    Exec=/home/voloshin/.cargo/bin/alacritty
+    Exec=~/.cargo/bin/alacritty
     Icon=utilities-terminal
     Terminal=false
     Categories=System;TerminalEmulator;
@@ -118,9 +118,9 @@
 1. Link .tmux folder (filewise)
     ```sh
     mkdir -p ~/.tmux/scripts
-    ln -s /home/voloshin/repos/debian-configs/home/.tmux/*.sh ~/.tmux/scripts/
+    ln -s ~/repos/debian-configs/home/.tmux/*.sh ~/.tmux/scripts/
     rm ~/.tmux/plugins/tmux-which-key/config.yaml
-    ln -s /home/voloshin/repos/debian-configs/home/.tmux/plugins/tmux-which-key/config.yaml ~/.tmux/plugins/tmux-which-key
+    ln -s ~/repos/debian-configs/home/.tmux/plugins/tmux-which-key/config.yaml ~/.tmux/plugins/tmux-which-key
     ```
 
 #### Tmuxinator
@@ -162,7 +162,7 @@
     ```sh
     wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz
     tar xzvf nvim-linux-x86_64.tar.gz
-    sudo ln -s /home/voloshin/nvim-linux-x86_64/bin/nvim /usr/bin/
+    sudo ln -s ~/nvim-linux-x86_64/bin/nvim /usr/bin/
     ```
 
 1. Install utils for AstroNvim
@@ -192,6 +192,12 @@
 
 ### Qt Debugger pretty printers
 
+1. Link .gdbinit from home and .qtprinters
+    ```sh
+    ln -s ~/repos/debian-configs/home/.qtprinters ~/
+    ln -sf ~/repos/debian-configs/home/.gdbinit ~/
+    ```
+
 ## Qt
 
 1. create aqt env
@@ -214,20 +220,43 @@
     ```
 1. Link executables to /usr/bin
     ```sh
-    find /home/voloshin/.local/opt/Qt/6.7.0/gcc_64/bin/ -type f -executable -exec sudo ln -sf {} /usr/bin/ \;
-    find /home/voloshin/.local/opt/Qt/Tools/QtCreator/bin/ -type f -executable -exec sudo ln -sf {} /usr/bin/ \;
+    find ~/.local/opt/Qt/6.7.0/gcc_64/bin/ -type f -executable -exec sudo ln -sf {} /usr/bin/ \;
+    find ~/.local/opt/Qt/Tools/QtCreator/bin/ -type f -executable -exec sudo ln -sf {} /usr/bin/ \;
     ```
 
+1. Link lib to /usr/lib
+    ```sh
+    find ~/.local/opt/Qt/6.7.0/gcc_64/lib -name "*.so*" -exec sudo ln -sf {} /usr/lib/ \;
+    sudo ln -s ~/.local/opt/Qt/6.7.0/gcc_64/lib/cmake /usr/lib/cmake/Qt
+
+    ```
+
+1. Link include to /usr/include
+    ```sh
+    sudo ln -s ~/.local/opt/Qt/6.7.0/gcc_64/include/* /usr/include/
+    ```
 
 ### Creator
 
-1. Install creator
+1. Install .desktop to .local
     ```sh
-    aqt -c qt_install.cfg install-tool linux desktop tools_qtcreator_gui
-
-    sudo mv /usr/bin/qtcreator /usr/bin/qtcreator.backup
-    sudo ln -s ~/Tools/QtCreator/bin/qtcreator /usr/bin/
+    ln -s ~/.local/opt/Qt/Tools/QtCreator/share/applications/org.qt-project.qtcreator.desktop ~/.local/share/applications
+    cp ~/.local/opt/Qt/Tools/QtCreator/share/icons ~/.local/share -r
+    update-desktop-database ~/.local/share/applications
     ```
+1. Link examples and docs:
+    ```sh
+    ln -s ~/.local/opt/Qt/Docs/Qt-6.7.0/ ~/.local/opt/Qt/6.7.0/gcc_64/doc
+    ln -s ~/.local/opt/Qt/Examples/Qt-6.7.0 ~/.local/opt/Qt/6.7.0/gcc_64/examples
+    ```
+1. Configure qt creator:
+    * Run Creator
+    * Remove all added QtVersions in `Edit -> Prefetences -> Kits -> Qt Versions`
+    * Add new Qt Version `qmake6` from `/usr/bin`
+    * Configure kit with added QtVersion, gcc and gdb.
+    * Turn on Beautifier `Help -> About plugins`
+    * Configure Beautifier `Edit -> Preferences -> Beautifier`: set `clang-format`, format on save, format style file with fallback llvm 
+
 
 ## VPN
 
