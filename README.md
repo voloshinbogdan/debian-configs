@@ -104,11 +104,58 @@
 	```
 ### Tmux
 
+1. Install Tmux
+
+	```sh
+	sudo apt install -y tmux
+	# install plugin manager
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	```
+
+1. Link tmux config from home
+
+1. Run tmux and install plugins <prefix> + I
+
+1. Link .tmux folder (filewise)
+  ```sh
+  mkdir -p ~/.tmux/scripts
+  ln -s /home/voloshin/repos/debian-configs/home/.tmux/*.sh ~/.tmux/scripts/
+  rm ~/.tmux/plugins/tmux-which-key/config.yaml
+  ln -s /home/voloshin/repos/debian-configs/home/.tmux/plugins/tmux-which-key/config.yaml ~/.tmux/plugins/tmux-which-key
+  ```
+
 #### Tmuxinator
+
+1. Install tmuxinator
+	```sh
+	brew install tmuxinator
+	sudo wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O /usr/local/share/zsh/site-functions/_tmuxinator
+	```
 
 ### fzf
 
+1. Install fzf
+	```sh
+	brew install fzf
+	```
+1. Add to .zshrc
+  ```sh
+  source <(fzf --zsh)
+  ```
+
 ### zoxidie
+
+1. Install zoxide
+  ```sh
+  brew install zoxide
+  ```
+
+1. Add to .zshrc
+  ```sh
+  eval "$(zoxide init zsh)"
+  alias cd='z'
+  alias cdi='zi'
+  ```
 
 ## AstroNvim
 
@@ -123,17 +170,17 @@
 	```sh
 	cargo install --locked tree-sitter-cli
 
-    brew install ripgrep
+  brew install ripgrep
 
-    curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
-    chmod +x gdu_linux_amd64
-    sudo mv gdu_linux_amd64 /usr/bin/gdu
+  curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
+  chmod +x gdu_linux_amd64
+  sudo mv gdu_linux_amd64 /usr/bin/gdu
 
-    cargo install bottom
+  cargo install bottom
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-    \. "$HOME/.nvm/nvm.sh"
-    nvm install 24
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+  \. "$HOME/.nvm/nvm.sh"
+  nvm install 24
 	```
 
 1. Install AstroNvim

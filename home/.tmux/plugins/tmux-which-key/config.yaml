@@ -93,6 +93,9 @@ items:
   - name: Detach
     key: d
     command: detach
+  - name: Resize
+    key: z
+    command: resize-pane -Z
 
   - separator: true
   - name: "Run command-prompt"

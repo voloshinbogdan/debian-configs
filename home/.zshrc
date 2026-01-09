@@ -74,3 +74,19 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# start tmux only for interactive shells
+if [[ -z "$TMUX" && -n "$PS1" ]]; then
+  exec tmux new-session -A -s main
+fi
+
+# Default editor
+export EDITOR=nvim
+
+# fzf configs
+source <(fzf --zsh)
+
+# zoxide configs
+eval "$(zoxide init zsh)"
+alias cd='z'
+alias cdi='zi'
