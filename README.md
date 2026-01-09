@@ -113,7 +113,7 @@
 
 1. Link tmux config from home
 
-1. Run tmux and install plugins <prefix> + I
+1. Run tmux and install plugins `<prefix> + I`
 
 1. Link .tmux folder (filewise)
     ```sh
